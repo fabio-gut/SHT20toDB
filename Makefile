@@ -15,7 +15,7 @@ all: compile checkstyle test
 compile: $(MAINS) $(TESTS)
 
 checkstyle:
-	python ../cpplint.py --repository=. *.cpp *.h
+	./cpplint.py --repository=. *.cpp *.h
 
 clean:
 	rm -f *.o
