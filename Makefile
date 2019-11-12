@@ -3,7 +3,7 @@
 .PRECIOUS: *.o
 
 CXX = g++ -g -Wall -pedantic -std=c++11
-ADDITIONAL_LIBS = -lncurses
+ADDITIONAL_LIBS =
 TEST_LIBS = -lgtest -lgtest_main -lpthread
 HEADERS = $(wildcard *.h)
 OBJECTS = $(addsuffix .o, $(basename $(filter-out %Main.cpp %Test.cpp, $(wildcard *.cpp))))
