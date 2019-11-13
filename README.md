@@ -3,8 +3,12 @@ A simple tool that reads from a [SHT20](https://www.mouser.com/datasheet/2/682/S
 
 ## Dependencies
 [MariaDB C++ Connector](https://mariadb.com/kb/en/library/mariadb-connector-c/)  
-Ubuntu/Debian: `sudo apt install libmariadb-dev libmariadbclient-dev`  
-Arch/Manjaro: `sudo pacman -S mariadb-libs`
+* Ubuntu/Debian: `sudo apt install libmariadb-dev libmariadbclient-dev`  
+* Arch/Manjaro: `sudo pacman -S mariadb-libs`
+
+I2C Development Headers
+* Ubuntu/Debian: `sudo apt install libi2c-dev`
+* Arch/Manjaro:  `sudo pacman -S i2c-tools linux-api-headers`
 
 ## Compile & Run
 `make`  

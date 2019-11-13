@@ -27,7 +27,8 @@ Config::Config() {
 // ________________________________________________________________________________
 
 void Config::createDefault() const {
-  std::string text("i2cAdress=1\n"
+  std::string text("i2cAddress=1\n"
+                   "busFile=/dev/i2c-1\n"
                    "sqlHost=localhost\n"
                    "sqlUser=user\n"
                    "sqlPass=pass\n"
@@ -59,8 +60,10 @@ int Config::read() {
     if (std::getline(is_line, key, '=')) {
       std::string value;
       if (std::getline(is_line, value)) {
-        if (key == "i2cAdress")
-          this->i2cAdress = atoi(value.c_str());
+        if (key == "i2cAddress")
+          this->i2cAddress = atoi(value.c_str());
+        else if (key == "busFile")
+          this->busFile = value;
         else if (key == "sqlHost")
           this->sqlHost = value;
         else if (key == "sqlUser")

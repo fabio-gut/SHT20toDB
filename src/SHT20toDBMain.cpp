@@ -12,11 +12,17 @@
 int main(int argc, char** argv) {
   Config c;
   DB db(&c);
-  // SHT20 sht20(&c);
+  SHT20 sht20(&c);
 
-  std::tuple<float, float> values = std::make_tuple(1.1, 3.3);;
+  float temp = sht20.getTemp();
+  float humidity = sht20.getHumidity();
+
+  if (temp == 999999.0 || humidity == 999999.0) {
+    std::cerr << "Failed to read values. Stopping" << std::endl;
+    exit(1);
+  }
 
   db.connect();
   db.createTable();
-  db.insert(values);
+  db.insert(std::make_tuple(temp, humidity));
 }

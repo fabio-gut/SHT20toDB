@@ -13,7 +13,8 @@ class Config {
   void createDefault() const;
   int read();
 
-  int i2cAdress;
+  uint8_t i2cAddress;
+  std::string busFile;
   std::string sqlHost;
   std::string sqlUser;
   std::string sqlPass;
