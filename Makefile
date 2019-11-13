@@ -2,25 +2,31 @@
 .PHONY: compile test checkstyle clean valgrind
 .PRECIOUS: *.o
 
-CXX = g++ -g -Wall -pedantic -std=c++11 -I/usr/include/mariadb
+CXX = g++ -g -Wall -pedantic -std=c++11 -I/usr/include/mariadb -I./src
 ADDITIONAL_LIBS = -lmariadb -lmariadbclient
 TEST_LIBS = -lgtest -lgtest_main -lpthread
-HEADERS = $(wildcard *.h)
-OBJECTS = $(addsuffix .o, $(basename $(filter-out %Main.cpp %Test.cpp, $(wildcard *.cpp))))
-MAINS = $(basename $(wildcard *Main.cpp))
-TESTS = $(basename $(wildcard *Test.cpp))
+SRCDIR = src
+HEADERS = $(wildcard $(SRCDIR)/*.h)
+OBJECTS = $(addsuffix .o, $(basename $(filter-out %Main.cpp %Test.cpp, $(wildcard $(SRCDIR)/*.cpp))))
+MAINS = $(basename $(wildcard $(SRCDIR)/*Main.cpp))
+TESTS = $(basename $(wildcard $(SRCDIR)/*Test.cpp))
 
-all: compile checkstyle test
+all: compile copy checkstyle test
 
 compile: $(MAINS) $(TESTS)
 
+copy: $(MAINS)
+	cp $^ $(subst Main,,$(notdir $^))
+
 checkstyle:
-	./cpplint.py --repository=. *.cpp *.h
+	./cpplint.py --root=$(SRCDIR) *.cpp *.h
 
 clean:
-	rm -f *.o
+	rm -f $(SRCDIR)/*.o
+	rm -f $(SRCDIR)/*Main
 	rm -f *Main
 	rm -f *Test
+	rm -f $(subst Main,,$(notdir $(MAINS)))
 
 valgrind: $(TESTS) $(MAINS)
 	for T in $(TESTS); do valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$$T; done
@@ -36,4 +42,4 @@ test: $(TESTS)
 	$(CXX) -o $@ $^ $(TEST_LIBS) $(ADDITIONAL_LIBS)
 
 %.o: %.cpp $(HEADERS)
-	$(CXX) -c $<
+	$(CXX) -c $< -o $@
