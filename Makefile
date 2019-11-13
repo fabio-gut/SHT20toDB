@@ -19,7 +19,7 @@ copy: $(MAINS)
 	cp $^ $(subst Main,,$(notdir $^))
 
 checkstyle:
-	./cpplint.py --root=$(SRCDIR) *.cpp *.h
+	cd $(SRCDIR) && ./cpplint.py --repository=. *.cpp *.h && cd ..
 
 clean:
 	rm -f $(SRCDIR)/*.o
