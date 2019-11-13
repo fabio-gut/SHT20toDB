@@ -7,7 +7,7 @@ Ubuntu/Debian: `sudo apt install libmariadb-dev libmariadbclient-dev`
 Arch/Manjaro: `sudo pacman -S mariadb-libs`
 
 ## Compile & Run
-`make`
+`make`  
 `./WeatherMain`
 
 ## Settings
