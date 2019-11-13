@@ -7,12 +7,8 @@ Ubuntu/Debian: `sudo apt install libmariadb-dev libmariadbclient-dev`
 Arch/Manjaro: `sudo pacman -S mariadb-libs`
 
 ## Compile & Run
-```console
-make
-```
-```console
-./WeatherMain
-```
+`make`
+`./WeatherMain`
 
 ## Settings
 A file sht20todb.cfg will be created. Enter your DB information in the file.
