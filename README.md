@@ -8,7 +8,7 @@ Arch/Manjaro: `sudo pacman -S mariadb-libs`
 
 ## Compile & Run
 `make`  
-`./SHT20toDBMain` (You can rename the file just like you want)
+`./SHT20toDB`
 
 ## Settings
-A file SHT20toDB.cfg will be created. Enter your DB information in the file.
+A file SHT20toDB.cfg will be created in the folder you execute the binary in. Enter your DB information in the file.
