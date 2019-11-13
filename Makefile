@@ -2,8 +2,8 @@
 .PHONY: compile test checkstyle clean valgrind
 .PRECIOUS: *.o
 
-CXX = g++ -g -Wall -pedantic -std=c++11
-ADDITIONAL_LIBS =
+CXX = g++ -g -Wall -pedantic -std=c++11 -I/usr/include/mariadb
+ADDITIONAL_LIBS = -lmariadb -lmariadbclient
 TEST_LIBS = -lgtest -lgtest_main -lpthread
 HEADERS = $(wildcard *.h)
 OBJECTS = $(addsuffix .o, $(basename $(filter-out %Main.cpp %Test.cpp, $(wildcard *.cpp))))
