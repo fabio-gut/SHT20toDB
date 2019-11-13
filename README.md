@@ -8,7 +8,7 @@ Arch/Manjaro: `sudo pacman -S mariadb-libs`
 
 ## Compile & Run
 `make`  
-`./WeatherMain`
+`./SHT20toDBMain` (You can rename the file just like you want)
 
 ## Settings
 A file SHT20toDB.cfg will be created. Enter your DB information in the file.
