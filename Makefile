@@ -3,7 +3,7 @@
 .PRECIOUS: *.o
 
 CXX = g++ -g -Wall -pedantic -std=c++11 -I/usr/include/mariadb -I/usr/include/mysql -I./src
-ADDITIONAL_LIBS = -lmariadb -lmariadbclient
+ADDITIONAL_LIBS = -lmariadb
 TEST_LIBS = -lgtest -lgtest_main -lpthread
 SRCDIR = src
 HEADERS = $(wildcard $(SRCDIR)/*.h)
