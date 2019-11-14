@@ -2,7 +2,7 @@
 .PHONY: compile test checkstyle clean valgrind
 .PRECIOUS: *.o
 
-CXX = g++ -g -Wall -pedantic -std=c++11 -I/usr/include/mariadb -I./src
+CXX = g++ -g -Wall -pedantic -std=c++11 -I/usr/include/mariadb -I/usr/include/mysql -I./src
 ADDITIONAL_LIBS = -lmariadb -lmariadbclient
 TEST_LIBS = -lgtest -lgtest_main -lpthread
 SRCDIR = src
