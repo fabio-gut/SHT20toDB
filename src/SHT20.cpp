@@ -2,7 +2,6 @@
 // Author: Fabio Gutmann <https://github.com/fabio-gut>
 
 #include <arpa/inet.h>
-#include <linux/i2c-dev.h>
 #include <fcntl.h>
 #include <sys/ioctl.h>
 #include <unistd.h>
@@ -10,6 +9,7 @@
 #include <iostream>
 #include "./SHT20.h"
 #include "./Config.h"
+#include "./i2c-dev.h"
 
 // ________________________________________________________________________________
 
