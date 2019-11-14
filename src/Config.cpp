@@ -18,9 +18,10 @@ Config::Config() {
       std::cout << "Config : Parsing successful" << std::endl;
     }
   } else {
-    std::cout << "Config : Not found, creating default"
-                 "Please edit the config and restart!" << std::endl;
+    std::cerr << "Config : Not found, creating default" << std::endl;
+    std::cerr << "Please edit the config and restart!" << std::endl;
     this->createDefault();
+    exit(1);
   }
 }
 
