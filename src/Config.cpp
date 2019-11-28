@@ -28,7 +28,7 @@ Config::Config() {
 // ________________________________________________________________________________
 
 void Config::createDefault() const {
-  std::string text("i2cAddress=1\n"
+  std::string text("i2cAddress=64\n"
                    "busFile=/dev/i2c-1\n"
                    "sqlHost=localhost\n"
                    "sqlUser=user\n"
