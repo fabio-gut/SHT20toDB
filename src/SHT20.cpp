@@ -35,7 +35,7 @@ float SHT20::getTemp() const {
     std::cerr << "SHT20  : Error reading temp from sensor" << std::endl;
     return 999999.0;
   }
-  return -6 + 125 * ntohs(tempData) / pow(2, 16);
+  return -46.85 + 175.72 * ntohs(tempData) / pow(2, 16);
 }
 
 // ________________________________________________________________________________
@@ -48,5 +48,5 @@ float SHT20::getHumidity() const {
     std::cerr << "SHT20  : Error reading humidity from sensor" << std::endl;
     return 999999.0;
   }
-  return -46.85 + 157.72 * ntohs(humidityData) / pow(2, 16);
+  return -6 + 125 * ntohs(humidityData) / pow(2, 16);
 }
