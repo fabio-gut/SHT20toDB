@@ -15,14 +15,21 @@
 
 SHT20::SHT20(Config* c) {
   this->c = c;
-
-  this->fd = open(this->c->busFile.c_str(), O_RDWR);
-  if (this->fd < 0)
-    std::cerr << "SHT20  : Cannot open bus" << std::endl;
-  else
-    std::cout << "SHT20  : Bus open" << std::endl;
-  ioctl(this->fd, I2C_SLAVE, this->c->i2cAddress);
+  if ((this->fd = open(this->c->busFile.c_str(), O_RDWR)) < 0) {  // open bus
+    std::cerr << "SHT20  : Cannot open bus file" << std::endl;
+    exit(1);
+  }
+  if (ioctl(this->fd, I2C_SLAVE, this->c->i2cAddress) < 0) {  // set i2c address
+    std::cerr << "SHT20  : Cannot set slave address" << std::endl;
+    exit(1);
+  }
   usleep(1000);
+}
+
+// ________________________________________________________________________________
+
+SHT20::~SHT20() {
+  close(this->fd);  // close bus file
 }
 
 // ________________________________________________________________________________

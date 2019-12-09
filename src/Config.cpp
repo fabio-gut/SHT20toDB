@@ -14,8 +14,6 @@ Config::Config() {
     if (this->read()) {
       std::cerr << "Config : Parsing failed, please check it" << std::endl;
       exit(1);
-    } else {
-      std::cout << "Config : Parsing successful" << std::endl;
     }
   } else {
     std::cerr << "Config : Not found, creating default" << std::endl;

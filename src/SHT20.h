@@ -9,11 +9,12 @@
 class SHT20 {
  public:
   explicit SHT20(Config* c);
+  ~SHT20();
   float getTemp() const;
   float getHumidity() const;
  private:
   Config* c;
-  int fd;  // File descriptor to access sensor
+  int fd = -1;  // File descriptor to access sensor
 };
 
 #endif  // SHT20_H_
