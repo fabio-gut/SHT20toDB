@@ -1,6 +1,7 @@
 // Copyright 2019
 // Author: Fabio Gutmann <https://github.com/fabio-gut>
 
+#include <unistd.h>
 #include <string>
 #include <fstream>
 #include <iostream>
@@ -10,6 +11,13 @@
 // ________________________________________________________________________________
 
 Config::Config() {
+  char exepath[100] = {0};
+  std::stringstream dir;
+  dir << "/proc/" << getpid() << "/exe";
+  readlink(dir.str().c_str(), exepath, sizeof(exepath));
+  this->configPath.append(exepath);
+  this->configPath.append(".cfg");
+
   if (this->exists()) {
     if (this->read()) {
       std::cerr << "Config : Parsing failed, please check it" << std::endl;
@@ -33,7 +41,7 @@ void Config::createDefault() const {
                    "sqlPass=pass\n"
                    "sqlDB=database\n");
 
-  std::ofstream configFile(this->name);
+  std::ofstream configFile(this->configPath);
   configFile << text;
   configFile.close();
 }
@@ -41,14 +49,14 @@ void Config::createDefault() const {
 // ________________________________________________________________________________
 
 bool Config::exists() const {
-  std::ifstream f(this->name);
+  std::ifstream f(this->configPath);
   return f.good();
 }
 
 // ________________________________________________________________________________
 
 int Config::read() {
-  std::ifstream configFile(this->name);
+  std::ifstream configFile(this->configPath);
   std::string line;
   while (true) {
     std::getline(configFile, line);

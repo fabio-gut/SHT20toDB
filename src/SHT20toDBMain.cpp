@@ -2,6 +2,8 @@
 // Author: Fabio Gutmann <https://github.com/fabio-gut>
 
 #include <iostream>
+#include <sstream>
+#include <fstream>
 #include <tuple>
 #include "./Config.h"
 #include "./DB.h"

@@ -20,7 +20,7 @@ class Config {
   std::string sqlPass;
   std::string sqlDB;
  private:
-  std::string name = "SHT20toDB.cfg";
+  std::string configPath;
 };
 
 #endif  // CONFIG_H_
