@@ -12,6 +12,7 @@ class SHT20 {
   ~SHT20();
   float getTemp() const;
   float getHumidity() const;
+  uint8_t getCRC(uint16_t data) const;
  private:
   Config* c;
   int fd = -1;  // File descriptor to access sensor
