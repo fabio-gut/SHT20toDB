@@ -8,8 +8,14 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v1
-    - name: Install Dependencies
+    - name: checkout repository
+      uses: actions/checkout@v2
+    - name: install dependencies
       run: sudo apt update && sudo apt install libmariadb-dev libmariadbclient-dev
     - name: make
       run: make
+    - name: archive production artifact
+      uses: actions/upload-artifacts@v1
+      with:
+        name: SHT20toDB_x86
+        path: SHT20toDB
