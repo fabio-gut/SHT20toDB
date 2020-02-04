@@ -15,7 +15,7 @@ jobs:
     - name: make
       run: make
     - name: archive production artifact
-      uses: actions/upload-artifacts@v1
+      uses: actions/upload-artifact@v1
       with:
         name: SHT20toDB_x86
         path: SHT20toDB
