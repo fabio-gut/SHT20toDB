@@ -27,8 +27,10 @@ int main(int argc, char** argv) {
       exit(1);
     }
     tries++;
-    usleep(100000);
+    usleep(500000);  // wait for half a second before retrying
   }
+
+  usleep(1000000);  // wait for one second before measuring humidity
 
   while ((humidity = sht20.getHumidity()) == 999999.0) {
     if (tries > 10) {
@@ -36,7 +38,7 @@ int main(int argc, char** argv) {
       exit(1);
     }
     tries++;
-    usleep(100000);
+    usleep(500000);
   }
 
   std::cout << "Got values from sensor: T=" << temp << " °C, RH="
